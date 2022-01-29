@@ -1,5 +1,5 @@
 const myFun = (input) => {
-  let obj = {};
+  const obj = {};
 
   for(const element of input){
     obj[element] = obj[element] + 1 || 1;

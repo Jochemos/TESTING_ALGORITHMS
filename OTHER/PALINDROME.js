@@ -9,5 +9,5 @@ const isPalindrome = (words) =>{
   }
 };
 
-let yourPalindrome = isPalindrome('RACECAR');
+const yourPalindrome = isPalindrome('RACECAR');
 console.log(`${yourPalindrome}`);

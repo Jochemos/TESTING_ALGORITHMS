@@ -4,7 +4,7 @@ const myFun = (setA, setB) => {
     return null;
   }
 
-  let product = [];
+  const product = [];
 
   for(let xA = 0; xA < setA.length; xA += 1){
     if(setA[xA] === undefined){
@@ -28,8 +28,8 @@ const myFun = (setA, setB) => {
 
 }
 
-let to_jest_przyklad = myFun([1,2,3,4], [`a`, `b`, `c`, `d`]);
+let exampleView = myFun([1,2,3,4], [`a`, `b`, `c`, `d`]);
 
-console.log(`${to_jest_przyklad}`);
+console.log(`${exampleView}`);
 
 module.exports = myFun;

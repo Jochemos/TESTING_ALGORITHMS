@@ -1,6 +1,6 @@
 const funFunction = (num) =>{
-  let f = "FIZZ";
-  let b = "BUZZ";
+  const f = "FIZZ";
+  const b = "BUZZ";
 
   for(let i=0; i<num && !isNaN(num); i++){
     if(num%15 === 0){
@@ -24,5 +24,5 @@ const funFunction = (num) =>{
 
 };
 
-let checkItOut = funFunction(/*ENTER YOUR NUMBER*/);
+const checkItOut = funFunction(/*ENTER YOUR NUMBER*/);
 console.log(`${checkItOut}`);
