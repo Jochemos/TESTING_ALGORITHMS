@@ -5,16 +5,14 @@ describe('cypHer', () => {
 
     const expected = `enter number between 100 to 999`;
 
-    let one = cypHer(`1`);
-    let two = cypHer(`11`);
-    let three = cypHer(`1111`);
-    let four = cypHer(`aaa`);
+    const one = cypHer(`1`);
+    const two = cypHer(`11`);
+    const three = cypHer(`1111`);
+    const four = cypHer(`aaa`);
 
     expect(one).toBe(expected);
     expect(two).toBe(expected);
     expect(three).toBe(expected);
     expect(four).toBe(expected);
   });
-
-  
 });
