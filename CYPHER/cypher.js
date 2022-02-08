@@ -7,6 +7,8 @@ const cypHer = (input) => {
   const obj = {};
   const empty = (arr) => arr.length = 0;
 
+  const tabloNextPart = [];
+
   for (let e = 0; e < strToTable.length; e++) {
     if (strToTable[e].length !== 3 || isNaN(strToTable[e])) {
       try {
@@ -72,7 +74,23 @@ const cypHer = (input) => {
     obj[tablo[e]] = tablo2.slice(0, tablo2.length);
     empty(tablo2);
   }
-  return JSON.stringify(obj);
+
+  Object.keys(obj).forEach(function(key) {
+
+  for(let a=0; a<obj[key].length; a++){
+    delete obj
+    obj[key].forEach(e => {
+      if(!isNaN(e)){
+        const nextVal = key % e;
+        tabloNextPart.push(String.fromCodePoint(nextVal));
+      }
+
+    })
+  }
+
+});
+  // return JSON.stringify(obj);
+  return JSON.stringify(tabloNextPart);
 };
 
 const answer = '720 739 477 327 984 730';
