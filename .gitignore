@@ -1,5 +1,7 @@
 /ALGORITHMS
 /node_modules
+/classEvolution/fifthStage.js
 package-lock.json
 package.json
+tsconfig.json
 .eslintrc.js
