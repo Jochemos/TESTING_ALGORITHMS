@@ -80,9 +80,12 @@ const dataStore = {
   boots: new ProductMarkUp('adidas90834', 'Boots: Adidas', 134, 267),
 };
 
+/* // stopped for insert changes in files from folder TypeScriptGenericTypes
 Object.keys(dataStore).forEach(item => {
     console.log(dataStore[item].identyProd());
     console.log(dataStore[item].resultMargin());
     console.log(dataStore[item].resultMarkUp());
-
 });
+*/
+
+export default ProductMarkUp;

@@ -1,6 +1,7 @@
 /ALGORITHMS
 /node_modules
 /classEvolution/fifthStage.js
+/TypeScriptGenericTypes/insertBasic.js
 package-lock.json
 package.json
 tsconfig.json
