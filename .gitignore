@@ -2,6 +2,8 @@
 /node_modules
 /classEvolution/fifthStage.js
 /TypeScriptGenericTypes/insertBasic.js
+/TypeScriptGenericTypes/genericInterface.js
+/bigSafe
 package-lock.json
 package.json
 tsconfig.json
