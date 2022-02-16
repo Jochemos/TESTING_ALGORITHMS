@@ -3,6 +3,7 @@
 /classEvolution/fifthStage.js
 /TypeScriptGenericTypes/insertBasic.js
 /TypeScriptGenericTypes/genericInterface.js
+/designPatterns/Strategy/strategyPattern.js
 /bigSafe
 package-lock.json
 package.json
