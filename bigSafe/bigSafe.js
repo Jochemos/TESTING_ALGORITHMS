@@ -1,40 +1,92 @@
-// Algorithm on building -------------------
-
 const doZero = (fix) => fix.length = 0;
 const objectKeys = {};
-const objectSummary = {};
+const objectAttemptTest = {};
+const objectEntrySafe = {};
 const positionLetters = [];
 const containLetters = [];
 
 const myFun = (inputOne, inputTwo) => {
-  const inputBetween = inputOne.split('');
+  const inputBetweenFirst = inputOne.split('');
+  const inputBetweenSecond = inputTwo.split('');
 
-  const inputBase = inputBetween.sort();
+  const inputBaseOne = inputBetweenFirst.sort();
+  const inputBaseTwo = inputBetweenSecond.sort();
 
-  for (let i = 0; i < inputBase.length; i++) {
-    containLetters.push(inputBase[i]);
-    positionLetters.push(i);
+  for (let i = 0; i < inputBaseOne.length; i++) {
 
     const calcLetters = [];
 
-    if (inputBase[i] != inputBase[i + 1]) {
+    containLetters.push(inputBaseOne[i]);
+    positionLetters.push(i);
+
+
+    if (inputBaseOne[i] != inputBaseOne[i + 1]) {
       objectKeys[containLetters[i]] = positionLetters;
 
       Object.entries(objectKeys).forEach(([key, value]) => {
         calcLetters.push(value);
       });
 
-      objectSummary[inputBase[i]] = calcLetters[0].slice('');
+      delete objectKeys;
+
+      objectAttemptTest[inputBaseOne[i]] = calcLetters[0].slice('').length;
 
       doZero(positionLetters);
-    }
-  }
+    };
+  };
 
-  return JSON.stringify(objectSummary);
-  // {"a":[0,1],"b":[2,3,4,5],"c":[6,7,8,9],"d":[10,11,12,13],"f":[14,15]}
+  doZero(containLetters);
+  doZero(positionLetters);
+
+  for (let j = 0; j < inputBaseTwo.length; j++) {
+
+    const calcLetters = [];
+
+    containLetters.push(inputBaseTwo[j]);
+    positionLetters.push(j);
+
+
+    if (inputBaseTwo[j] != inputBaseTwo[j + 1]) {
+      objectKeys[containLetters[j]] = positionLetters;
+
+      Object.entries(objectKeys).forEach(([key, value]) => {
+        calcLetters.push(value);
+      });
+
+      delete objectKeys;
+
+      objectEntrySafe[inputBaseTwo[j]] = calcLetters[0].slice('').length;
+
+      doZero(positionLetters);
+    };
+  };
+
+  const tabloComparisonOne = [];
+  const tabloComparisonTwo = [];
+
+  Object.values(objectAttemptTest).forEach(e => tabloComparisonOne.push(e));
+  Object.values(objectEntrySafe).forEach(e => tabloComparisonTwo.push(e));
+
+  const comparisonArray = [];
+
+  if(tabloComparisonOne.length === tabloComparisonTwo.length){
+    for(let k=0; k<tabloComparisonOne.length; k++){
+
+      const text = tabloComparisonOne[k] === tabloComparisonTwo[k];
+
+      comparisonArray.push(text);
+
+    };
+  };
+
+  if(comparisonArray.includes(false)){
+    return `Code not broken`;
+  }else{
+    return `Code break !`;
+  };
 };
 
-const attemptTest = 'abbbbccccddaffdd';
-const entrySafe = 'abcfgh';
+const attemptTest = 'abcdef';
+const entrySafe = 'fedcba';
 
 console.log(myFun(attemptTest, entrySafe));
