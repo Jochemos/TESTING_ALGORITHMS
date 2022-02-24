@@ -1,92 +1,105 @@
-const doZero = (fix) => fix.length = 0;
+const doZero = (fix) => fix.length = 0; // return empty array
+const doZeroObject = (fix) => fix = undefined; // return empty object
 const objectKeys = {};
 const objectAttemptTest = {};
 const objectEntrySafe = {};
 const positionLetters = [];
 const containLetters = [];
 
-const myFun = (inputOne, inputTwo) => {
-  const inputBetweenFirst = inputOne.split('');
-  const inputBetweenSecond = inputTwo.split('');
+const bigSafe = (inputOne, inputTwo) => {
+  const negativeOption = [];
 
-  const inputBaseOne = inputBetweenFirst.sort();
-  const inputBaseTwo = inputBetweenSecond.sort();
+  if (inputOne.length != inputTwo.length) {
+    negativeOption.push(true);
+  }
 
-  for (let i = 0; i < inputBaseOne.length; i++) {
+  if (negativeOption[0] != true) {
+    const inputBetweenFirst = inputOne.split('');
+    const inputBetweenSecond = inputTwo.split('');
 
-    const calcLetters = [];
+    const inputBaseOne = inputBetweenFirst.sort();
+    const inputBaseTwo = inputBetweenSecond.sort();
 
-    containLetters.push(inputBaseOne[i]);
-    positionLetters.push(i);
+    for (let i = 0; i < inputBaseOne.length; i++) {
+      const calcLetters = [];
 
+      containLetters.push(inputBaseOne[i]);
+      positionLetters.push(i);
 
-    if (inputBaseOne[i] != inputBaseOne[i + 1]) {
-      objectKeys[containLetters[i]] = positionLetters;
+      if (inputBaseOne[i] != inputBaseOne[i + 1]) {
+        objectKeys[containLetters[i]] = positionLetters;
 
-      Object.entries(objectKeys).forEach(([key, value]) => {
-        calcLetters.push(value);
-      });
+        Object.entries(objectKeys).forEach(([key, value]) => {
+          calcLetters.push(value);
+        });
 
-      delete objectKeys;
+        doZeroObject(objectKeys);
 
-      objectAttemptTest[inputBaseOne[i]] = calcLetters[0].slice('').length;
+        objectAttemptTest[inputBaseOne[i]] = calcLetters[0].slice('').length;
 
-      doZero(positionLetters);
-    };
-  };
+        doZero(positionLetters);
+      }
+    }
 
-  doZero(containLetters);
-  doZero(positionLetters);
+    doZero(containLetters);
+    doZero(positionLetters);
 
-  for (let j = 0; j < inputBaseTwo.length; j++) {
+    for (let j = 0; j < inputBaseTwo.length; j++) {
+      const calcLetters = [];
 
-    const calcLetters = [];
+      containLetters.push(inputBaseTwo[j]);
+      positionLetters.push(j);
 
-    containLetters.push(inputBaseTwo[j]);
-    positionLetters.push(j);
+      if (inputBaseTwo[j] != inputBaseTwo[j + 1]) {
+        objectKeys[containLetters[j]] = positionLetters;
 
+        Object.values(objectKeys).forEach((val) => {
+          calcLetters.push(val);
+        });
 
-    if (inputBaseTwo[j] != inputBaseTwo[j + 1]) {
-      objectKeys[containLetters[j]] = positionLetters;
+        doZeroObject(objectKeys);
 
-      Object.entries(objectKeys).forEach(([key, value]) => {
-        calcLetters.push(value);
-      });
+        objectEntrySafe[inputBaseTwo[j]] = calcLetters[0].slice('').length;
 
-      delete objectKeys;
+        doZero(positionLetters);
+      }
+    }
 
-      objectEntrySafe[inputBaseTwo[j]] = calcLetters[0].slice('').length;
+    const tabloComparisonOne = [];
+    const tabloComparisonTwo = [];
 
-      doZero(positionLetters);
-    };
-  };
+    Object.values(objectAttemptTest).forEach((e) => tabloComparisonOne.push(e));
+    Object.values(objectEntrySafe).forEach((e) => tabloComparisonTwo.push(e));
 
-  const tabloComparisonOne = [];
-  const tabloComparisonTwo = [];
+    const comparisonArray = [];
 
-  Object.values(objectAttemptTest).forEach(e => tabloComparisonOne.push(e));
-  Object.values(objectEntrySafe).forEach(e => tabloComparisonTwo.push(e));
-
-  const comparisonArray = [];
-
-  if(tabloComparisonOne.length === tabloComparisonTwo.length){
-    for(let k=0; k<tabloComparisonOne.length; k++){
-
+    for (let k = 0; k < tabloComparisonOne.length; k++) {
       const text = tabloComparisonOne[k] === tabloComparisonTwo[k];
 
       comparisonArray.push(text);
+    }
 
-    };
-  };
-
-  if(comparisonArray.includes(false)){
-    return `Code not broken`;
-  }else{
-    return `Code break !`;
-  };
+    if (comparisonArray.includes(false)) {
+      try {
+        throw new Error(319, 'Code not broken');
+      } catch (x) {
+        return `${x}, info: ${'Code not broken'}`;
+      }
+    } else {
+      return 'Code break !';
+    }
+  } else {
+    try {
+      throw new Error(319, 'Code not broken');
+    } catch (x) {
+      return `${x}, info: ${'Code not broken'}`;
+    }
+  }
 };
 
 const attemptTest = 'abcdef';
 const entrySafe = 'fedcba';
 
-console.log(myFun(attemptTest, entrySafe));
+console.log(bigSafe(attemptTest, entrySafe));
+
+module.exports = bigSafe;
