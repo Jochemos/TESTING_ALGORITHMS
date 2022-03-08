@@ -35,9 +35,10 @@ const middleFunction = function (input) {
   quiteParts.push(arrayParts.join('')); // add last string from input
 };
 
+// main function for return convert string
 const convertStage = function () {
-  const arrayNumbers = [];
-  const onlyNumbers = [];
+  const arrayNumbers = []; // array utilizing for convert numbers from data
+  const onlyNumbers = []; // contain base numbers of data
 
   for (let i = 0; i < quiteParts.length; i++) {
     for (let j = 0; j < quiteParts[i].length; j++) {
@@ -50,16 +51,42 @@ const convertStage = function () {
     doZero(arrayNumbers);
   }
 
-  const k = (x) => {
-    for (let i = 0; i < x.length; i++) {
-      console.log(Math.floor(x[i] / 2));
+  const divideNumber = []; // divide number to convert this with modulo
+  const conectObject = {}; // empty object to next pushig conected relations
+  const binarArray = []; // for 1 or 0 into
+
+  for (let v = 1; v <= onlyNumbers.length; v++) {
+    for (let d = 0; d < v; d++) {
+      doZero(divideNumber);
+      doZero(binarArray);
+      divideNumber.push(onlyNumbers[d]);
     }
-  };
 
-  k(onlyNumbers);
+    for (i = 0; i < divideNumber.length; i++) {
+      if (Math.floor(divideNumber[i] / 2) != 0 && !isNaN(Math.floor(divideNumber[i] / 2))) {
+        divideNumber.push(Math.floor(divideNumber[i] / 2));
+      }
+      binarArray.push(divideNumber[i] % 2);
+    }
+    conectObject[binarArray] = divideNumber[0]; // assigning variables and properties as links to determine number
+  }
 
-  console.log(onlyNumbers);
+  const mainArray = []; // prepare empty array for result
+
+  // eject only keys of object, which contain converting numbers
+  const extract = Object.keys(conectObject);
+
+  // regulation stage
+  for (let i = 0; i < extract.length; i++) {
+    mainArray.push(extract[i].split(',').reverse().join(''));
+  }
+
+  const finallyResult = mainArray.join('');
+
+  return finallyResult;
 };
 
 console.log(checkFunction('2009-09-18')); // correct
 // console.log(checkFunction(`2009-09-18-`)); // not correct
+
+module.exports = checkFunction;
