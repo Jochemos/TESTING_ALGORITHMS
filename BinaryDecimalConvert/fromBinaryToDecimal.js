@@ -5,21 +5,21 @@ const getData = '110001011100';
 const getYear = [];
 const getMonth = [];
 
-for(let i=0; i<=getData.length; i++){
-  if(i>=0 && i<8){
+for (let i = 0; i <= getData.length; i++) {
+  if (i >= 0 && i < 8) {
     getYear.push(getData[i]);
   }
 
-  if(i>7 && i<12){
+  if (i > 7 && i < 12) {
     getMonth.push(getData[i]);
   }
-};
+}
 
 console.log(getMonth);
 
 const insertInput = [];
 insertInput.push(getYear.join('').split(' '));
-//insertInput.push(getMonth.join('').split(' '));
+// insertInput.push(getMonth.join('').split(' '));
 
 console.log(insertInput);
 
@@ -34,7 +34,6 @@ const checkFunction = function () {
   const resultNumber = arrayNumbers.reduce((previousValue, currentValue) => previousValue + currentValue);
 
   return resultNumber;
-
 };
 
 const getResult = checkFunction();
@@ -48,24 +47,22 @@ const dataConvertion = arrayConvertion.join('').split('');
 const arrayLeft = [];
 const arrayRight = [];
 
-  if(getResult > 200){
-
-    for(let i=0;i<dataConvertion.length; i++){
-      if(i==0){
-        arrayLeft.push(dataConvertion[i]);
-      }else{
-        arrayRight.push(dataConvertion[i]);
-      };
-    };
-
-    arrayLeft.push('0');
-    const conclusionView = arrayLeft.concat(arrayRight).join('');
-
-    console.log(conclusionView);
-  }else if(getResult < 200){
-
-    dataConvertion.push('0');
-    const conclusionView = dataConvertion.join('')
-
-    console.log(conclusionView);
+if (getResult > 200) {
+  for (let i = 0; i < dataConvertion.length; i++) {
+    if (i == 0) {
+      arrayLeft.push(dataConvertion[i]);
+    } else {
+      arrayRight.push(dataConvertion[i]);
+    }
   }
+
+  arrayLeft.push('0');
+  const conclusionView = arrayLeft.concat(arrayRight).join('');
+
+  console.log(conclusionView);
+} else if (getResult < 200) {
+  dataConvertion.push('0');
+  const conclusionView = dataConvertion.join('');
+
+  console.log(conclusionView);
+}
